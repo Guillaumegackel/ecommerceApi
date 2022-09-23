@@ -7,6 +7,7 @@ const authRoutes = require ("./routes/auth");
 const productRoutes = require ("./routes/product");
 const orderRoutes = require ("./routes/order");
 const cartRoutes = require ("./routes/cart");
+const stripeRoutes = require ("./routes/stripe")
 const cors = require("cors")
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use("/api/user", userRoutes)
 app.use("/api/products", productRoutes)
 app.use("/api/carts", cartRoutes)
 app.use("/api/orders", orderRoutes)
+app.use("/api/checkout", stripeRoutes)
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend is OK");
