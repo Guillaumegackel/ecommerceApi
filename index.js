@@ -2,11 +2,12 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const userRoutes = require ("./routes/users")
-const authRoutes = require ("./routes/auth")
-const productRoutes = require ("./routes/product")
-const orderRoutes = require ("./routes/order")
-const cartRoutes = require ("./routes/cart")
+const userRoutes = require ("./routes/users");
+const authRoutes = require ("./routes/auth");
+const productRoutes = require ("./routes/product");
+const orderRoutes = require ("./routes/order");
+const cartRoutes = require ("./routes/cart");
+const cors = require("cors")
 
 dotenv.config();
 
@@ -17,7 +18,9 @@ mongoose
     console.log(err);
   });
 
-app.use(express.json())
+app.use(express.json());
+
+app.use(cors());
 
 app.use("/api/auth", authRoutes)
 app.use("/api/user", userRoutes)
